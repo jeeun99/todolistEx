@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/main.css" />
+  </head>
+  <body>
+    <%- include('nav.html') %>
+    <h1>상세내용페이지</h1>
+
+    <p hidden>번호: <%= data._id %></p>
+    <p>제목: <%= data.제목 %></p>
+    <p>날짜: <%= data.날짜 %></p>
+
+    <hr />
+
+    <button class="delete" data-id="<%= data._id %>">삭제</button>
+    <a class="edite" href="/edit/<%= data._id %>">수정</a>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(".delete").click(function (e) {
+        let num = e.target.dataset.id;
+        console.log(num);
+        $.ajax({
+          method: "DELETE",
+          url: "/delete",
+          data: { _id: num }, //라우트
+        })
+          .done(function (result) {
+            console.log("성공");
+            location.href = "/";
+          })
+          .fail(function (err) {
+            console.log("실패");
+          });
+      });
+    </script>
+  </body>
+</html>

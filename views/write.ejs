@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('nav.html') %>
+    <h1>오늘의 할일 작성</h1>
+
+    <form action="/add" method="post">
+      <ul>
+        <li>
+          <p>
+            <label>제목: <input type="text" name="title" /></label>
+          </p>
+          <p>
+            <label>날짜: <input type="date" name="date" /></label>
+          </p>
+          <input type="submit" value="입력" />
+        </li>
+      </ul>
+    </form>
+  </body>
+</html>
